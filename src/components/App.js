@@ -11,9 +11,9 @@ import StreamShow from './streams/StreamShow';
 const App = () => {
   return (
     <div className='ui container'>
-      <Header />
       <BrowserRouter>
-        <div>
+      <div>
+          <Header />
           <Route path='/' exact component={StreamList} />
           <Route path='/streams/new' component={StreamCreate} />
           <Route path='/streams/delete' component={StreamDelete} />
