@@ -2,11 +2,12 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 
 class StreamCreate extends React.Component {
-  renderInput({ input, label }) {
+  renderInput({ input, label, meta }) {
     return (
       <div className='field'>
         <label>{label}</label>
         <input {...input} />
+        <div>{meta.error}</div>
       </div>
     );
   }
@@ -33,6 +34,18 @@ class StreamCreate extends React.Component {
   }
 }
 
+const validate = (formValues) => {
+  const errs = {};
+  if (!formValues.title) {
+    errs.title = 'Title can not be blank';
+  }
+  if (!formValues.description) {
+    errs.description = 'Description can not be blank';
+  }
+  return errs;
+};
+
 export default reduxForm({
   form: 'streamCreate',
+  validate,
 })(StreamCreate);
