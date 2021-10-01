@@ -14,7 +14,13 @@ class StreamEdit extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    // this is actually pretty important
+    // if you dont have this conditional
+    // and navigate directly to the URL it
+    // REACT will not actually fill the form values
+    if (!this.props.stream) {
+      return <div>Loading...</div>;
+    }
     return (
       <div>
         <h3>Edit a Stream</h3>
